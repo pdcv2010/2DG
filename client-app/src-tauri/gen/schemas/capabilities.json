@@ -1,0 +1,1 @@
+{"main-capability":{"identifier":"main-capability","description":"SentinelGate desktop UI","local":true,"windows":["main"],"permissions":["core:default","dialog:allow-open","dialog:allow-save"]}}

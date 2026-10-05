@@ -1,0 +1,24 @@
+SentinelGate Windows audio conversion runtime
+
+Place the complete bin/ contents from an official BtbN FFmpeg Windows x64 LGPL shared release here:
+  https://github.com/BtbN/FFmpeg-Builds/releases
+
+Required at minimum:
+  ffmpeg.exe
+  ffprobe.exe
+  every DLL shipped alongside those executables by that release
+  the release's license/notices and any required redistribution materials
+
+Use the win64-lgpl-shared archive, not a GPL, nonfree, or third-party repack. Keep all files from
+its bin/ directory together so Windows can resolve its DLLs. Do not rename or replace binaries.
+
+SentinelGate's Tauri configuration already recursively packages this entire directory as the
+installed runtime/ folder. Before creating an installer, run:
+  npm run verify:media-runtime
+
+That check starts both tools, catching absent executables and missing DLLs. It does not download
+or fabricate media tools. The Protect pipeline then probes source audio, converts to mono 44.1 kHz
+16-bit PCM WAV, and validates the WAV before invoking sentinelgate.exe.
+
+Audio temp files are retained when Protect fails for diagnosis and stale audio temp directories
+older than seven days are pruned when a later audio job starts.

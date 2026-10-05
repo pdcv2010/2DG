@@ -1,0 +1,14 @@
+{
+  "name": "sentinelgate-desktop",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "tauri": "tauri",
+    "verify:media-runtime": "node scripts/verify-media-runtime.mjs",
+    "build:windows:nsis": "npm run verify:media-runtime && tauri build --bundles nsis"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.0"
+  }
+}
